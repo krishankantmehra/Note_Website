@@ -1,0 +1,15 @@
+{
+    "name": "Note_website",
+    "author": {
+        "name": "krishan kant mehra"
+    },
+    "scripts": {
+        "install": "cd api && npm install && cd ../login && npm install",
+        "server": "cd api && npm start",
+        "client": "cd login && npm start",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "devDependencies": {
+        "concurrently": "^6.3.0"
+    }
+}
