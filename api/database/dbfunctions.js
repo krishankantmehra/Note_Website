@@ -3,49 +3,49 @@ var connection = require('./connection');
 //get all users from database
 getusers = () => {
     return new Promise(resolve => {
-        connection.query("select * from login.users",(err,res) => {
-            if(err){
-                console.log("error in finding all user query : \n" +   err)
+        connection.query("select * from users", (err, res) => {
+            if (err) {
+                console.log("error in finding all user query : \n" + err)
                 resolve(err)
             }
-            else{
+            else {
                 res = JSON.stringify(res)
                 res = JSON.parse(res)
                 resolve(res)
             }
         })
     })
-    
+
 }
 
 
 // add a new user
-add = async(user)=>{
-    
+add = async (user) => {
+
 
     return new Promise(resolve => {
-        connection.query(`insert into login.users(name,password) values ('${user.name}','${user.password}')`,(err,res) => {
-        
-            if(err){
+        connection.query(`insert into users(name,password) values ('${user.name}','${user.password}')`, (err, res) => {
+
+            if (err) {
                 console.log(err)
                 resolve(false)
             }
-            else{
-                 resolve(true);
+            else {
+                resolve(true);
             }
         })
-        
+
     })
-   
+
 }
 
 //delete all users
-drop = ()=>{
-    connection.query("delete from login.users",(err,res) => {
-        if(err){
-            console.log("error in deleting user query : \n" +   err)
+drop = () => {
+    connection.query("delete from users", (err, res) => {
+        if (err) {
+            console.log("error in deleting user query : \n" + err)
         }
-        else{
+        else {
             console.log("success");
         }
     })
@@ -53,31 +53,31 @@ drop = ()=>{
 
 
 //find a specific user
-finduser = (s)=>{
-   const { name,password} = s
-  
-   return new Promise(resolve => {
-       connection.query(`select * from login.users where name = "${name}" and password = "${password}"`,(err,res) => {
-        if(err){
-            resolve(false)
-        }
-        else {
-            if(res.length == 0)resolve(false)
-            else resolve(true)
-        }
-       })
-   })
+finduser = (s) => {
+    const { name, password } = s
+
+    return new Promise(resolve => {
+        connection.query(`select * from users where name = "${name}" and password = "${password}"`, (err, res) => {
+            if (err) {
+                resolve(false)
+            }
+            else {
+                if (res.length == 0) resolve(false)
+                else resolve(true)
+            }
+        })
+    })
 }
 
 //fetch data from database
-getData = (name)=>{
+getData = (name) => {
     return new Promise(resolve => {
-        connection.query(`select * from login.data where user = "${name}"`,(err,res) => {
-            if(err){
+        connection.query(`select * from data where user = "${name}"`, (err, res) => {
+            if (err) {
                 console.log(err)
                 resolve(false)
             }
-            else{
+            else {
                 resolve(res)
             }
         })
@@ -85,36 +85,36 @@ getData = (name)=>{
 }
 
 //add new data 
-addData = (data)=>{
-    console.log(data);
+addData = (data) => {
+    // console.log(data);
     return new Promise(resolve => {
-        connection.query(`insert into login.data value
+        connection.query(`insert into data value
         (default, 
         "${data.name}" ,
         "${data.title}" ,
         "${data.description}"
         )`
-        ,(err,res) => {
-            if(err){
-                console.log(err)
-                resolve(false)
-            }
-            else{
-                resolve(true)
-            }
-        })
+            , (err, res) => {
+                if (err) {
+                    console.log(err)
+                    resolve(false)
+                }
+                else {
+                    resolve(true)
+                }
+            })
     })
 }
 
 //delete data
-deleteData = (id)=>{
+deleteData = (id) => {
     return new Promise(resolve => {
-        connection.query(`delete from login.data where id=${id}`,(err,res) => {
-            if(err){
+        connection.query(`delete from data where id=${id}`, (err, res) => {
+            if (err) {
                 console.log(err)
                 resolve(false)
             }
-            else(
+            else (
 
                 resolve(true)
             )
@@ -123,23 +123,23 @@ deleteData = (id)=>{
 }
 
 //update Data
-updateData = (data)=>{
-    console.log(data);
+updateData = (data) => {
+    // console.log(data);
     return new Promise(resolve => {
-        connection.query(`update  login.data set
+        connection.query(`update  data set
             title= "${data.title}",
             description="${data.description}"
             where id=${data.id}`
 
-        ,(err,res) => {
-            if(err){
-                console.log(err)
-                resolve(false)
-            }
-            else{
-                resolve(true)
-            }
-        })
+            , (err, res) => {
+                if (err) {
+                    console.log(err)
+                    resolve(false)
+                }
+                else {
+                    resolve(true)
+                }
+            })
     })
 }
 

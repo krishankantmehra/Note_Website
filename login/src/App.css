@@ -1,16 +1,23 @@
+:root{
+  --greydark: rgb(11, 13, 15);
+  --greylight:rgb(143, 143, 143);
+  --fontcolor:white;
+}
+
 body{
-  font-family:'Times New Roman', Times, serif;
-  background-color:rgb(143, 143, 143);
+  font-family: sans-serif;
+  background-color:var(--greylight);
 }
 .window{
-  background-color: rgb(59, 59, 59);
-  color: white;
-  padding:30px
+  background-color: var(--greydark);
+  color: var(--fontcolor);
+  padding:30px;
 }
 .userInfo{
-   color: #ffffff;
+   color: var(--fontcolor);
 }
 .contentDescH {
   display: none;
-  color: whitesmoke;
+  color:  var(--fontcolor);
+  font-size: large;
 }

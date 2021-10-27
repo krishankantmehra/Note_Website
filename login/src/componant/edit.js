@@ -37,7 +37,7 @@ class Edit extends Component {
             errormsg.innerText = "*Description cannot be empty."
             return;
         }
-        
+
 
 
 
@@ -65,10 +65,9 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.description);
         if (this.props.id) {
             document.getElementById('title' + this.props.id).value = this.props.title
-            document.getElementById('description' + this.props.id ).value = this.props.description
+            document.getElementById('description' + this.props.id).value = this.props.description
         }
     }
 
