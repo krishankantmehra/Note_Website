@@ -1,0 +1,16 @@
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background-color:rgb(143, 143, 143);
+}
+.window{
+  background-color: rgb(59, 59, 59);
+  color: white;
+  padding:30px
+}
+.userInfo{
+   color: #ffffff;
+}
+.contentDescH {
+  display: none;
+  color: whitesmoke;
+}
