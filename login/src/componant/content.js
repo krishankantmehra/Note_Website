@@ -16,13 +16,19 @@ class content extends Component {
         await fetch(`/users/?user=${this.props.userName}`)
             .then(res => res.json()
                 .then(res => {
-
+                    console.log(res);
                     this.setState({ data: res })
 
                 }))
 
         if (this.state.data.length === 0)
             document.getElementById("content").innerHTML = `<h1  class="text-center">Your Notes will appear here.</h1>`
+        
+        else{
+            this.state.data.forEach(e => {
+                document.getElementById('titleC' + e.id).innerText = e.title
+            })
+        }
 
     }
 
@@ -55,16 +61,17 @@ class content extends Component {
         })
     }
 
-    show = (id) => {
-        if (document.getElementById('descriptionC' + id).style.display === "block") {
-            document.getElementById('descriptionC' + id).style.display = "none"
-            document.getElementById('edit' + id).style.display = "none"
-            document.getElementById('del' + id).style.display = "none"
+    show = (data) => {
+        if (document.getElementById('descriptionC' + data.id).style.display === "block") {
+            document.getElementById('descriptionC' + data.id).style.display = "none"
+            document.getElementById('edit' + data.id).style.display = "none"
+            document.getElementById('del' + data.id).style.display = "none"
         }
         else {
-            document.getElementById('descriptionC' + id).style.display = "Block"
-            document.getElementById('edit' + id).style.display = "Block"
-            document.getElementById('del' + id).style.display = "Block"
+            document.getElementById('descriptionC' + data.id).style.display = "Block"
+            document.getElementById('descriptionC' + data.id).innerText =  data.description 
+            document.getElementById('edit' + data.id).style.display = "Block"
+            document.getElementById('del' + data.id).style.display = "Block"
         }
 
     }
@@ -75,13 +82,13 @@ class content extends Component {
                 {
                     this.state.data.map((data, index) => {
                         return <div className="d-flex flex-column justify-content-between p-3 m-3 window text-light shadow" key={index} >
-                            <div className='col-12 text-break' onClick={() => this.show(data.id)} style={{ cursor: "pointer" }} >
+                            <div className='col-12 text-break' onClick={() => this.show(data)} style={{ cursor: "pointer" }} >
                                 <div className='d-flex flex-row justify-content-between align-items-center text-justify'>
 
-                                    <h1 className='text-primary' >{data.title}</h1>
+                                    <h1 className='text-primary' id={"titleC" + data.id} >{data.title}</h1>
 
                                     <div className='d-flex flex-row'>
-                                        <button className={`m-1 btn btn-primary border-none contentDescH`} data-bs-toggle="modal" data-bs-target={"#addDataForm" + data.id} id={"edit" + data.id}>
+                                        <button className={`m-1 btn btn-primary border-none contentDescH`} data-bs-toggle="modal" data-bs-target={"#addDataForm" + data.id} id={"edit" + data.id} >
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                 <path fillRule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
@@ -98,7 +105,7 @@ class content extends Component {
                             </div>
 
                             <div className='d-flex flex-row align-items-start justify-content-start  contentDescH' >
-                                <p className={`contentDescH mt-3`} id={"descriptionC" + data.id}>{data.description}</p>
+                                <p className={`contentDescH mt-3`} id={"descriptionC" + data.id}></p>
 
 
 

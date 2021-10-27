@@ -6,7 +6,7 @@ class Edit extends Component {
 
     updateStr = (s) => {
         for (let i = 0; i < s.length; i++) {
-            if (s[i] === "\"" || s[i] === '\'') {
+            if (s[i] === "\"" || s[i] === "'") {
 
                 s = [s.slice(0, i), "\\", s.slice(i)].join('')
                 i++
@@ -23,10 +23,10 @@ class Edit extends Component {
         var errormsg = document.getElementById('errormsg' + this.props.id)
 
 
-
+        console.log("perv:" + description.value)
         title.value = this.updateStr(title.value)
         description.value = this.updateStr(description.value)
-
+        console.log("then:" + description.value)
         if (title.value === "") {
             title.focus()
             errormsg.innerText = "*Title cannot be empty."
@@ -89,7 +89,7 @@ class Edit extends Component {
                                         <input className="m-1" name='title' type="text" id={'title' + this.props.id} />
                                     </div>
                                     <div className='row mt-3'>
-                                        <label htmlFor={'description' + this.props.id} className='col-12 '>Description</label><br />
+                                        <label htmlFor={'description' + this.props.id} className='col-12 '>Description (MAX 10,000 characters)</label><br />
                                         <textarea className="m-1" id={'description' + this.props.id} name='description'></textarea>
                                     </div>
                                 </div>

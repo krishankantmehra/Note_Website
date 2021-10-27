@@ -1,3 +1,6 @@
+drop database if exists login;
+drop user if exists 'loginManger'@'localhost';
+
 create database Login ;
 use login;
 create table users (
@@ -10,7 +13,7 @@ create table data (
 	id int auto_increment unique primary key not null,
     user varchar(200) not null,
     title text not null,
-    description mediumtext not null,
+    description varchar(15000) not null,
     constraint datavsuser foreign key (user) references users(name)
 );
 
