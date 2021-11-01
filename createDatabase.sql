@@ -14,7 +14,7 @@ create table data (
     user varchar(200) not null,
     title text not null,
     description varchar(15000) not null,
-    constraint datavsuser foreign key (user) references users(name)
+    constraint datavsuser foreign key (user) references users(name) on delete cascade
 );
 
 create user 'loginManger'@'localhost' IDENTIFIED WITH mysql_native_password by 'asdfghjk';
