@@ -4,8 +4,8 @@
         "name": "krishan kant mehra"
     },
     "scripts": {
-        "install": "cd api && npm install && cd ../login && npm install",
-        "server": "cd api && npm start",
+        "install": "cd Backend && npm install && cd ../login && npm install",
+        "server": "cd Backend && npm start",
         "client": "cd login && npm start",
         "dev": "concurrently \"npm run server\" \"npm run client\""
     },
