@@ -91,7 +91,7 @@ class Signup extends Component {
                         <input type="password" className="form-control" name='password' id="password" placeholder='password' /><br></br>
 
                         <label htmlFor='confirm' >Confirm password : </label>
-                        <input type="password" className="form-control" name='confirm' id="confirm" placeholder='Retype password' /><br></br>
+                        <input type="password" className="form-control" name='confirm' id="confirm" placeholder='Retype Password' /><br></br>
 
 
                     </form>
