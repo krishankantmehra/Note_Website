@@ -13,18 +13,24 @@ class content extends Component {
     }
 
     async componentDidMount() {
+        var loading = document.getElementById("loading");
+
+        document.getElementById("content").style.display = "none"
+        loading.style.opacity = '100%'
+
         await fetch(`/users/?user=${this.props.userName}`)
             .then(res => res.json()
                 .then(res => {
-                    console.log(res);
-                    this.setState({ data: res })
 
+                    this.setState({ data: res })
+                    document.getElementById("content").style.display = "block"
+                    loading.style.display = "none"
                 }))
 
         if (this.state.data.length === 0)
             document.getElementById("content").innerHTML = `<h1  class="text-center">Your Notes will appear here.</h1>`
-        
-        else{
+
+        else {
             this.state.data.forEach(e => {
                 document.getElementById('titleC' + e.id).innerText = e.title
             })
@@ -69,7 +75,7 @@ class content extends Component {
         }
         else {
             document.getElementById('descriptionC' + data.id).style.display = "Block"
-            document.getElementById('descriptionC' + data.id).innerText =  data.description 
+            document.getElementById('descriptionC' + data.id).innerText = data.description
             document.getElementById('edit' + data.id).style.display = "Block"
             document.getElementById('del' + data.id).style.display = "Block"
         }
@@ -82,7 +88,7 @@ class content extends Component {
                 {
                     this.state.data.map((data, index) => {
                         return <div className="d-flex flex-column justify-content-between p-3 m-3 window text-light shadow" key={index} >
-                            <div className='col-12 text-break' onClick={() => this.show(data)} style={{ cursor: "pointer" }} >
+                            <div className='col-12 text-break' onClick={() => this.show(data)} style={{ cursor: "pointer" }}  >
                                 <div className='d-flex flex-row justify-content-between align-items-center text-justify'>
 
                                     <h1 className='text-primary' id={"titleC" + data.id} >{data.title}</h1>
@@ -102,31 +108,32 @@ class content extends Component {
                                         </button>
                                     </div>
                                 </div>
+                                <div className='d-flex flex-row align-items-start justify-content-start  contentDescH' >
+                                    <p className={`contentDescH mt-3`} id={"descriptionC" + data.id}></p>
+                                </div>
                             </div>
 
-                            <div className='d-flex flex-row align-items-start justify-content-start  contentDescH' >
-                                <p className={`contentDescH mt-3`} id={"descriptionC" + data.id}></p>
 
 
 
-                                <div className='modal fade' id={"confirmDelete" + data.id}>
-                                    <div className="modal-dialog modal-sm" >
-                                        <div className="modal-content col-12 bg-dark text-light">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title">Confirm</h5>
-                                                <button type="button" className="btn  btn-dark" data-bs-dismiss="modal" >X</button>
-                                            </div>
+                            <div className='modal fade' id={"confirmDelete" + data.id}>
+                                <div className="modal-dialog modal-sm" >
+                                    <div className="modal-content col-12 bg-dark text-light">
+                                        <div className="modal-header">
+                                            <h5 className="modal-title">Confirm</h5>
+                                            <button type="button" className="btn  btn-dark" data-bs-dismiss="modal" >X</button>
+                                        </div>
 
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" className="btn btn-primary" onClick={() => this.deleteNote(index, data.id)} data-bs-dismiss="modal">Delete Note</button>
-                                            </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" className="btn btn-primary" onClick={() => this.deleteNote(index, data.id)} data-bs-dismiss="modal">Delete Note</button>
                                         </div>
                                     </div>
                                 </div>
-
-                                <Edit userName={this.props.userName} id={data.id} title={data.title} description={data.description} />
                             </div>
+
+                            <Edit userName={this.props.userName} id={data.id} title={data.title} description={data.description} />
+
 
                         </div>
                     })}

@@ -1,23 +1,27 @@
-:root{
+:root {
   --greydark: rgb(11, 13, 15);
-  --greylight:rgb(143, 143, 143);
-  --fontcolor:white;
+  --greylight: rgb(221, 219, 219);
+  --fontcolor: white;
 }
 
-body{
+body {
   font-family: sans-serif;
-  background-color:var(--greylight);
+  background-color: var(--greylight);
 }
-.window{
+.window {
   background-color: var(--greydark);
   color: var(--fontcolor);
-  padding:30px;
+  padding: 30px;
 }
-.userInfo{
-   color: var(--fontcolor);
+.userInfo {
+  color: var(--fontcolor);
 }
 .contentDescH {
   display: none;
-  color:  var(--fontcolor);
+  color: var(--fontcolor);
   font-size: large;
+}
+
+#content [id^="titleC"]:hover {
+  text-decoration: underline;
 }

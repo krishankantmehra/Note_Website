@@ -7,7 +7,7 @@ class AddData extends Component {
     render() {
         return (
             <div className='container-fluid d-flex flex-row justify-content-between my-4'>
-                <h1 className="text-center">Welcome {this.props.userName}</h1>
+                <h1 className="text-center text-uppercase">Welcome {this.props.userName}</h1>
 
                 <button type="button" className="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#addDataFormundefined">
                     + Notes

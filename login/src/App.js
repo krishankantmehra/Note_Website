@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import './App.css';
-import StartPage from './componant/startPage';
+import StartPage from './componant/Start';
 
 
 

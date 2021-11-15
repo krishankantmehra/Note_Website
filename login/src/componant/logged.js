@@ -9,9 +9,11 @@ class logged extends Component {
         return (
 
             <>
-                <Navbar userName={this.props.userName}/>
-                <AddData userName={this.props.userName}/>
-                <Content userName={this.props.userName}/>
+
+                <Navbar userName={this.props.userName} />
+                <AddData userName={this.props.userName} />
+                <h1 id='loading' className='text-center' style={{ opacity: "0%" }} >Getting data...</h1>
+                <Content userName={this.props.userName} />
             </>
         )
     }
