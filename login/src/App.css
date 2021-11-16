@@ -7,6 +7,7 @@
 body {
   font-family: sans-serif;
   background-color: var(--greylight);
+  overflow-y: scroll;
 }
 .window {
   background-color: var(--greydark);
@@ -19,7 +20,7 @@ body {
 .contentDescH {
   display: none;
   color: var(--fontcolor);
-  font-size: large;
+ 
 }
 
 #content [id^="titleC"]:hover {

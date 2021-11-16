@@ -23,10 +23,9 @@ class Edit extends Component {
         var errormsg = document.getElementById('errormsg' + this.props.id)
 
 
-        console.log("perv:" + description.value)
         title.value = this.updateStr(title.value)
         description.value = this.updateStr(description.value)
-        console.log("then:" + description.value)
+       
         if (title.value === "") {
             title.focus()
             errormsg.innerText = "*Title cannot be empty."
@@ -35,6 +34,16 @@ class Edit extends Component {
         if (description.value === "") {
             description.focus()
             errormsg.innerText = "*Description cannot be empty."
+            return;
+        }
+        if (description.value.length > 10000) {
+            description.focus()
+            errormsg.innerText = "*Description size is too big."
+            return;
+        }
+        if (title.value.length > 500) {
+            title.focus()
+            errormsg.innerText = "*Title is too big."
             return;
         }
 
@@ -85,7 +94,7 @@ class Edit extends Component {
                             <form id="dataForm">
                                 <div className='container'>
                                     <div className='row mb-3'>
-                                        <label htmlFor={'title' + this.props.id} className='col-12 '>Title</label><br />
+                                        <label htmlFor={'title' + this.props.id} className='col-12 '>Title (MAX 500 characters)</label><br />
                                         <input className="m-1" name='title' type="text" id={'title' + this.props.id} />
                                     </div>
                                     <div className='row mt-3'>

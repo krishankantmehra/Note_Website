@@ -89,9 +89,9 @@ class content extends Component {
                     this.state.data.map((data, index) => {
                         return <div className="d-flex flex-column justify-content-between p-3 m-3 window text-light shadow" key={index} >
                             <div className='col-12 text-break' onClick={() => this.show(data)} style={{ cursor: "pointer" }}  >
-                                <div className='d-flex flex-row justify-content-between align-items-center text-justify'>
+                                <div className='d-flex flex-row justify-content-between align-items-start text-justify'>
 
-                                    <h1 className='text-primary' id={"titleC" + data.id} >{data.title}</h1>
+                                    <h4 className='text-primary' id={"titleC" + data.id} >{data.title}</h4>
 
                                     <div className='d-flex flex-row'>
                                         <button className={`m-1 btn btn-primary border-none contentDescH`} data-bs-toggle="modal" data-bs-target={"#addDataForm" + data.id} id={"edit" + data.id} >
