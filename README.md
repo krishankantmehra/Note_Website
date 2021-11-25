@@ -8,12 +8,17 @@
 
 ### *How To run project* 
 
-1. First run createDatabase.sql file as database administrator  
-2. After successfully setting up database run these NPM commands 
+1. Run createDatabase.sql file as database administrator  
+2. Run this NPM command to install NPM dependencies.
 ```
   npm install
-  npm run dev
-  
+
 ```
+
+3. To run
+ ```
+ npm run dev 
+ 
+ ```
 
 
