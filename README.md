@@ -1,6 +1,6 @@
 # Notes Website
 ### **About**
-A responsive website to with login system to save notes on
+A responsive website with login system to save notes on
 website. This project maintains both frontend and backend
 for the website. It uses MySQL Database .
 
