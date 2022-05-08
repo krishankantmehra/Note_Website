@@ -109,7 +109,7 @@ class Edit extends Component {
                                             </label>
 
                                         </div>
-                                        <textarea className="m-1" id={'description' + this.props.id} name='description'></textarea>
+                                        <textarea className="m-1" rows={15} id={'description' + this.props.id} name='description'></textarea>
                                     </div>
                                 </div>
                             </form>
