@@ -13,12 +13,12 @@ class Signup extends Component {
 
 
         if (user.value === "") {
-            errormsg.innerHTML = "<p >**name cannot be empty.</p>"
+            errormsg.innerHTML = "<p >**PLEASE FILL DETAILS..</p>"
             user.focus()
             return;
         }
         if (password.value === "") {
-            errormsg.innerHTML = "<p >**password cannot be empty.</p>"
+            errormsg.innerHTML = "<p >**PLEASE FILL DETAILS.</p>"
             password.focus()
             return;
         }

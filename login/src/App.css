@@ -2,11 +2,15 @@
   --greydark: rgb(11, 13, 15);
   --greylight: rgb(221, 219, 219);
   --fontcolor: white;
+  --backColor: rgba(0,0,0,0.9);
 }
-
+#signup,#login{
+  background-color: var(--backColor);
+}
 body {
   font-family: sans-serif;
-  background-color: var(--greylight);
+  background: url("./componant/background.jpg");
+  background-size: cover;
   overflow-y: scroll;
 }
 .window {
@@ -23,6 +27,14 @@ body {
  
 }
 
+.items{
+  background-color: var(--backColor);
+}
 #content [id^="titleC"]:hover {
   text-decoration: underline;
+
+}
+#window{
+  background-color: rgba(255,255,255,0.5);
+  height: 100vh;
 }

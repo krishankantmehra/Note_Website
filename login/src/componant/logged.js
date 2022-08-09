@@ -8,13 +8,13 @@ class logged extends Component {
     render() {
         return (
 
-            <>
+            <div id="window">
 
                 <Navbar userName={this.props.userName} />
                 <AddData userName={this.props.userName} />
                 <h1 id='loading' className='text-center' style={{ opacity: "0%" }} >Getting data...</h1>
                 <Content userName={this.props.userName} />
-            </>
+            </div>
         )
     }
 }

@@ -11,12 +11,12 @@ class Login extends Component {
 
         if(user.value === "" ){
             user.focus()
-            errormsg.innerHTML = "username can't be empty."
+            errormsg.innerHTML = "**PLEASE FILL DETAILS."
             return;
         }
         if(password.value === ""){
             password.focus()
-            errormsg.innerHTML = "password can't be empty."
+            errormsg.innerHTML = "**PLEASE FILL DETAILS."
             return;
         }
 
@@ -29,7 +29,7 @@ class Login extends Component {
 
        }).catch(error => {
            console.log(error)
-           errormsg.innerHTML = "<p>User not Found</p>"
+           errormsg.innerHTML = "<p>**User not Found</p>"
        })
     
     }

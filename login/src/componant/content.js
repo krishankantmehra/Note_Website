@@ -87,7 +87,7 @@ class content extends Component {
             <div className='container-fluid' id="content">
                 {
                     this.state.data.map((data, index) => {
-                        return <div className="d-flex flex-column justify-content-between p-3 m-3 window text-light shadow" key={index} >
+                        return <div className="items d-flex flex-column justify-content-between p-3 m-3 window text-light shadow" key={index} >
                             <div className='col-12 text-break' onClick={() => this.show(data)} style={{ cursor: "pointer" }}  >
                                 <div className='d-flex flex-row justify-content-between align-items-start text-justify'>
 
