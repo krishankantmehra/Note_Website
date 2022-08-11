@@ -8,7 +8,7 @@ class logged extends Component {
     render() {
         return (
 
-            <div id="window">
+            <div id="window" className=''>
 
                 <Navbar userName={this.props.userName} />
                 <AddData userName={this.props.userName} />
