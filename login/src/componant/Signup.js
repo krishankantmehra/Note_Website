@@ -76,6 +76,11 @@ class Signup extends Component {
     componentDidUpdate(){
         this.show()
     }
+    handleClick = e =>{
+        if(e.key === 'Enter'){
+            this.submitSignupForm();
+        }
+    }
     render() {
         
         return (
@@ -85,13 +90,13 @@ class Signup extends Component {
                     <p>Already a member <button className="btn btn-secondary border-none" onClick={() => this.props.change()}> login </button></p>
                     <form >
                         <label htmlFor='Username' >Username : </label>
-                        <input type="text" className="form-control" name='username' id="name" placeholder='name' /><br></br>
+                        <input type="text" className="form-control" name='username' id="name" placeholder='name' onKeyDown={this.handleClick.bind(this)}/><br></br>
 
                         <label htmlFor='password' >Password : </label>
-                        <input type="password" className="form-control" name='password' id="password" placeholder='password' /><br></br>
+                        <input type="password" className="form-control" name='password' id="password" placeholder='password' onKeyDown={this.handleClick.bind(this)}/><br></br>
 
                         <label htmlFor='confirm' >Confirm password : </label>
-                        <input type="password" className="form-control" name='confirm' id="confirm" placeholder='Retype Password' /><br></br>
+                        <input type="password" className="form-control" name='confirm' id="confirm" placeholder='Retype Password' onKeyDown={this.handleClick.bind(this)}/><br></br>
 
 
                     </form>
