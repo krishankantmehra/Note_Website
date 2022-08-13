@@ -62,10 +62,10 @@ class Login extends Component {
                     <p>Not a member <button className="btn btn-secondary border-none" onClick={this.props.change}> Sign up </button></p>
                     <form id="loginForm">
                         <label htmlFor='Username' >Username : </label>
-                        <input type="text" className="form-control" name='username' id="loginName" placeholder='name' onKeyDown={this.handleClick.bind(this)} /><br></br>
+                        <input type="text" className="form-control" name='username' id="loginName" placeholder='NAME' onKeyDown={this.handleClick.bind(this)} /><br></br>
 
                         <label htmlFor='password' >Password : </label>
-                        <input type="password" className="form-control" name='password' id="loginPassword" placeholder='password' onKeyDown={this.handleClick.bind(this)}/><br></br>
+                        <input type="password" className="form-control" name='password' id="loginPassword" placeholder='PASSWORD' onKeyDown={this.handleClick.bind(this)}/><br></br>
 
                     </form>
                     <button type='submit' className="btn btn-primary" onClick={() => this.submitLoginForm()}>LOGIN</button>
