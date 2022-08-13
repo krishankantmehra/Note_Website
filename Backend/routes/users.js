@@ -34,13 +34,13 @@ router.post('/add', async (req, res, next) => {
 
 //login 
 router.post('/find', async (req, res) => {
-   console.log(req.body)
+ 
    if (await dbfunctions.find(req.body)) {
-      console.log("found")
+
       res.status(200).send("success")
    }
    else {
-      console.log("user not  found")
+
       res.status(404).send("not found")
    }
 })
@@ -77,7 +77,6 @@ router.post('/data/add', async (req, res) => {
 //delete data
 router.post('/data/del', async (req, res) => {
    const { id } = req.body
-   console.log(id);
 
    if (await dbfunctions.delData(id)) {
       res.status(200).send("success")
@@ -90,7 +89,7 @@ router.post('/data/del', async (req, res) => {
 
 //update data
 router.post('/data/update', async (req, res) => {
-   console.log("updating...");
+
 
    if (await dbfunctions.updateData(req.body)) {
       res.status(200).send("success")
