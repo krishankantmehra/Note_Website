@@ -9,7 +9,7 @@
 }
 body {
   font-family: sans-serif;
-  background: url("./componant/background.jpg");
+  background: url("./component/background.jpg");
   background-size: cover;
   overflow-y: scroll;
 }
