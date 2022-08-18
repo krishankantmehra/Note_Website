@@ -81,6 +81,11 @@ class Edit extends Component {
     }
 
 
+    handleEvent = e => {
+        if(e.key === 'Enter'){
+            document.getElementById('description' + this.props.id).focus()
+        }
+    }
     render() {
         return (
             <div className="modal fade bd-example-modal-lg" id={"addDataForm" + this.props.id} tabIndex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
@@ -94,8 +99,9 @@ class Edit extends Component {
                             <form id="dataForm">
                                 <div className='container'>
                                     <div className='row mb-3'>
-                                        <label htmlFor={'title' + this.props.id} className='col-12 '>Title (MAX 500 characters)</label><br />
-                                        <input className="m-1" name='title' type="text" id={'title' + this.props.id} />
+                                        <label htmlFor={'title' + this.props.id} className='col-12 ' >Title (MAX 500 characters)</label><br />
+
+                                        <textarea className='m-1' name='title' id={'title' + this.props.id} rows={1} onKeyDown={this.handleEvent.bind(this)}/>
                                     </div>
                                     <div className='row mt-3'>
                                         <div className='d-flex flex-row'>

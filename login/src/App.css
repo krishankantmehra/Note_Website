@@ -8,6 +8,7 @@
   background-color: var(--backColor);
 }
 body {
+  color: var(--fontcolor);
   font-family: sans-serif;
   background: url("./component/background.jpg");
   background-size: cover;

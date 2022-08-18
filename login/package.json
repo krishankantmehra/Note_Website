@@ -1,5 +1,7 @@
 {
   "name": "login",
+  "author":"Krishan kant mehra",
+  "E-mail":"krishankantmehra23@gmail.com",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001",
