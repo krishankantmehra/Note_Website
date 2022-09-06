@@ -29,7 +29,7 @@ class navbar extends Component {
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
         
-                <div class="modal-footer">
+                <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" className="btn btn-primary" onClick={()=>this.logout()}>Logout</button>
                 </div>
