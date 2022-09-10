@@ -21,7 +21,7 @@ class navbar extends Component {
                 </div>
             </nav>
 
-            <div className="modal fade " id="confirmLogout" tabindex="-1" aria-labelledby="confirmLogout" aria-hidden="false">
+            <div className="modal fade " id="confirmLogout" tabIndex="-1" aria-labelledby="confirmLogout" aria-hidden="false">
             <div className="modal-dialog ">
                 <div className="modal-content bg-dark">
                 <div className="modal-header">
