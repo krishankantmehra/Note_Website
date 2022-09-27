@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 class Edit extends Component {
 
-
     updateStr = (s) => {
         for (let i = 0; i < s.length; i++) {
             if (s[i] === "\"" || s[i] === "'") {
@@ -21,7 +20,6 @@ class Edit extends Component {
         var title = document.getElementById('title' + this.props.id)
         var description = document.getElementById('description' + this.props.id)
         var errormsg = document.getElementById('errormsg' + this.props.id)
-
 
         title.value = this.updateStr(title.value)
         description.value = this.updateStr(description.value)
@@ -47,8 +45,7 @@ class Edit extends Component {
             return;
         }
 
-
-
+        document.getElementById("submitBtn").disabled = "true"
 
         if (this.props.id) {
             await axios.post('/users/data/update', {
@@ -58,11 +55,13 @@ class Edit extends Component {
                 description: description.value
             }).then(res =>
                 window.location.reload()
+            ).catch(e =>
+                errormsg.innerText = e
             )
         }
+
         else {
             await axios.post('/users/data/add', {
-
                 name: this.props.userName,
                 title: title.value,
                 description: description.value
@@ -124,7 +123,7 @@ class Edit extends Component {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={this.sumbitData}>Save Note</button>
+                            <button type="button" id="submitBtn" className="btn btn-primary" onClick={this.sumbitData}>Save Note</button>
                         </div>
                     </div>
                 </div>

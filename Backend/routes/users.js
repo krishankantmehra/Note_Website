@@ -11,7 +11,7 @@ let allUsers = {}
 
 /* GET users listing. */
 router.get('/all', async function (req, res, next) {
-
+   res.setHeader('Content-Type', 'application/json');
    allUsers = await dbfunctions.All_users()
    res.send(allUsers)
 
@@ -20,8 +20,6 @@ router.get('/all', async function (req, res, next) {
 
 // Add a user
 router.post('/add', async (req, res, next) => {
-
-
    if (await dbfunctions.add(JSON.parse(JSON.stringify(req.body)))) {
       res.status(200).send("succsess")
    }
@@ -53,12 +51,8 @@ router.get('/del', (req, res) => {
 
 //Get a user data
 router.get('/', async (req, res) => {
-
    const { user } = req.query
-
    var data = await dbfunctions.getData(user)
-
-
    res.send(data)
 })
 

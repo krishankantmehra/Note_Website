@@ -1,8 +1,8 @@
-drop database if exists login;
-drop user if exists 'loginManger'@'localhost';
+ drop database if exists loginNotes;
+drop user if exists 'loginManger Notes Website'@'localhost';
 
-create database Login ;
-use login;
+create database loginNotes ;
+use loginNotes;
 create table users (
 	id int auto_increment unique primary key,
     name varchar(200) unique not null,
@@ -17,6 +17,6 @@ create table data (
     constraint datavsuser foreign key (user) references users(name) on delete cascade
 );
 
-create user 'loginManger'@'localhost' IDENTIFIED WITH mysql_native_password by 'asdfghjk';
-grant all privileges on login.* to 'loginManger'@'localhost';
+create user 'loginManger Notes Website'@'localhost' IDENTIFIED WITH mysql_native_password by 'KrishanKantMehra';
+grant all privileges on loginNotes.* to 'loginManger Notes Website'@'localhost';
 flush privileges;

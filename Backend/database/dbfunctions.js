@@ -1,4 +1,7 @@
 var connection = require('./connection');
+var crypto = require('crypto-js')
+var {secretKey, SHAkey} = require("./secretKey")
+
 
 //get all users from database
 getusers = () => {
@@ -9,8 +12,6 @@ getusers = () => {
                 resolve(err)
             }
             else {
-                res = JSON.stringify(res)
-                res = JSON.parse(res)
                 resolve(res)
             }
         })
@@ -22,9 +23,12 @@ getusers = () => {
 // add a new user
 add = async (user) => {
 
-
+    //Encrypt Data
+    var EncUser = crypto.SHA1(user.name , SHAkey);
+    var EncPassword = crypto.SHA1(user.password , SHAkey);
+    
     return new Promise(resolve => {
-        connection.query(`insert into users(name,password) values ('${user.name}','${user.password}')`, (err, res) => {
+        connection.query(`insert into users(name,password) values ('${EncUser}','${EncPassword}')`, (err, res) => {
 
             if (err) {
                 console.log(err)
@@ -55,9 +59,13 @@ drop = () => {
 //find a specific user
 finduser = (s) => {
     const { name, password } = s
-
+    
+    //Encrypt
+    var EncName  = crypto.SHA1(name, SHAkey)
+    var EncPassword  = crypto.SHA1(password, SHAkey)
+    
     return new Promise(resolve => {
-        connection.query(`select * from users where name = "${name}" and password = "${password}"`, (err, res) => {
+        connection.query(`select * from users where name = "${EncName}" and password = "${EncPassword}"`, (err, res) => {
             if (err) {
                 resolve(false)
             }
@@ -71,6 +79,7 @@ finduser = (s) => {
 
 //fetch data from database
 getData = (name) => {
+    name  = crypto.SHA1(name, SHAkey)
     return new Promise(resolve => {
         connection.query(`select * from data where user = "${name}"`, (err, res) => {
             if (err) {
@@ -78,7 +87,18 @@ getData = (name) => {
                 resolve(false)
             }
             else {
-                resolve(res)
+                // Decrypt Data
+                var Data = [];
+                res.forEach(tuple => {
+                    Data.push({
+                        id: tuple.id,
+                        user: tuple.user,
+                        title: crypto.AES.decrypt(tuple.title, secretKey).toString(crypto.enc.Utf8),
+                        description: crypto.AES.decrypt(tuple.description, secretKey).toString(crypto.enc.Utf8)
+                    })
+                });
+
+                resolve(Data)
             }
         })
     })
@@ -86,13 +106,17 @@ getData = (name) => {
 
 //add new data 
 addData = (data) => {
-    // console.log(data);
+    //Encrypt Data
+    var EncTitle = crypto.AES.encrypt(data.title,secretKey).toString();
+    var EncDescription = crypto.AES.encrypt(data.description,secretKey).toString()
+    var EncUser = crypto.SHA1(data.name, SHAkey)
+    //Store Encrypted Data in Database
     return new Promise(resolve => {
         connection.query(`insert into data value
         (default, 
-        "${data.name}" ,
-        "${data.title}" ,
-        "${data.description}"
+        "${EncUser}" ,
+        "${EncTitle}" ,
+        "${EncDescription}"
         )`
             , (err, res) => {
                 if (err) {
@@ -124,11 +148,14 @@ deleteData = (id) => {
 
 //update Data
 updateData = (data) => {
-    // console.log(data);
+    //Encrypt Data
+    var EncTitle = crypto.AES.encrypt(data.title,secretKey).toString();
+    var EncDescription = crypto.AES.encrypt(data.description,secretKey).toString()
+
     return new Promise(resolve => {
         connection.query(`update  data set
-            title= "${data.title}",
-            description="${data.description}"
+            title= "${EncTitle}",
+            description="${EncDescription}"
             where id=${data.id}`
 
             , (err, res) => {

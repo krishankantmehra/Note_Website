@@ -8,7 +8,7 @@ for the website. It uses MySQL Database .
 * MYSQL
 * Node Js
 
-> *There should not be database named "login" on this mysql server otherwise it will affect your data inside this database.*
+> *There should not be database named "loginNotes" on this mysql server otherwise it will affect your data inside this database.*
 
 ### *How To run project* 
 

@@ -28,7 +28,7 @@ class content extends Component {
                 }))
 
         if (this.state.data.length === 0)
-            document.getElementById("content").innerHTML = `<h1  class="text-center">Your Notes will appear here.</h1>`
+            document.getElementById("content").innerHTML = `<h1  class="text-center bg-dark p-2">Your Notes will appear here.</h1>`
 
         else {
             this.state.data.forEach(e => {
@@ -41,7 +41,7 @@ class content extends Component {
 
     componentDidUpdate() {
         if (this.state.data.length === 0)
-            document.getElementById("content").innerHTML = `<h1  class="text-center">Your Notes will appear here.</h1>`
+            document.getElementById("content").innerHTML = `<h1  class="text-center bg-dark p-2">Your Notes will appear here.</h1>`
 
     }
 
@@ -108,6 +108,8 @@ class content extends Component {
                                         </button>
                                     </div>
                                 </div>
+                               
+                               
                                 <div className='d-flex flex-row align-items-start justify-content-start  contentDescH' >
                                     <p className={`contentDescH mt-3`} id={"descriptionC" + data.id}></p>
                                 </div>

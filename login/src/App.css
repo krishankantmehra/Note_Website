@@ -11,8 +11,8 @@ body {
   color: var(--fontcolor);
   font-family: sans-serif;
   background: url("./component/background.jpg");
+  background-attachment: fixed;
   background-size: cover;
-  overflow-y: scroll;
 }
 .window {
   background-color: var(--greydark);
